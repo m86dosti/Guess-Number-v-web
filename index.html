@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>game</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #container{
+            background-color: darkgray;
+            padding: 10px;
+            margin: 20px;
+            max-height:250px; 
+            max-width: 200px;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        p{
+            margin: 20px;
+            background-color: gray;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            margin: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(17, 17, 17);
+            color: rgb(180, 180, 180);
+            border: none;
+            border-radius: 6px;
+        }
+        button:active{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 10px;
+        }
+        input{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+  
+<div id="container">
+    <h4>Number guessing game</h4>
+    <input type="number" id="num-input" placeholder="Enter the number (0 , 10)">
+    <button onclick="game()">ok</button>
+</div>
+<p id="output"></p>
+  
+<script>
+
+    function reload(){location.reload()}
+
+    function game(){
+
+    var output = document.getElementById('output');
+    var number = parseInt(document.getElementById('num-input').value);
+
+    var n = Math.random()*10;
+    var num = Math.floor(n);
+
+    if(isNaN(number) || number > 10 && number >= 0  )
+    {
+        output.innerHTML = "Enter a number from 0 to 10";
+        setTimeout((reload),4000);
+    }
+    else{
+
+    if(number === num)
+        {
+            output.innerHTML = "The number is correct";
+            setTimeout((reload),2000);
+        }
+    else{
+            output.innerHTML = "The number is incorrect";
+            setTimeout(() => output.innerHTML = "Correct number: " + num , 1000 );
+            setTimeout(output.innerHTML = "Try again" , 1000);
+            setTimeout((reload),2000);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
